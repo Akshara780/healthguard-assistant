@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+// @ts-ignore
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 
