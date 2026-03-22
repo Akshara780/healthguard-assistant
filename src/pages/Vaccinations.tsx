@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { Plus, Syringe, Calendar, Trash2, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
+import WhatsAppSubscribe from "@/components/WhatsAppSubscribe";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 
 type VaccineRecord = {
   id: string;
