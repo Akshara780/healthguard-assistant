@@ -131,6 +131,14 @@ export default function Alerts() {
                         ))}
                       </ul>
                     </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="mt-2 gap-1.5 text-[#25D366] hover:text-[#25D366] p-0 h-auto text-xs"
+                      onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`⚠️ Health Alert: ${alert.title}\n\n${alert.description}\n\nRecommended actions:\n${alert.actions.map(a => `• ${a}`).join('\n')}\n\n— Shared from HealthGuard`)}`, "_blank", "noopener,noreferrer")}
+                    >
+                      <MessageCircle className="h-3 w-3" /> Share via WhatsApp
+                    </Button>
                   </div>
                 </div>
               </CardContent>
