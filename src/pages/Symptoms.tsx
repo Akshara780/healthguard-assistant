@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -237,7 +238,14 @@ export default function Symptoms() {
             </CardContent>
           </Card>
 
-          <Button onClick={reset} variant="outline" className="w-full">Check Another Symptom</Button>
+          <div className="flex gap-2">
+            <Button onClick={reset} variant="outline" className="flex-1">Check Another Symptom</Button>
+            <WhatsAppShareButton
+              text={`HealthGuard Symptom Check Results:\n\n${results.map((r) => `• ${r.condition} (${r.urgency} urgency)\n  ${r.recommendation}`).join("\n\n")}\n\n⚠️ This is AI-generated and does not replace medical advice.\n— Shared from HealthGuard`}
+              label="Share"
+              variant="outline"
+            />
+          </div>
         </div>
       )}
     </div>

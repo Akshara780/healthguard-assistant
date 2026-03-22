@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Bot, User, Loader2, Stethoscope, MapPin, Syringe } from "lucide-react";
+import { Send, Bot, User, Loader2, Stethoscope, MapPin, Syringe, MessageCircle } from "lucide-react";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -187,6 +188,17 @@ export default function Chat() {
               )}
             </div>
           ))}
+
+          {/* Share conversation via WhatsApp */}
+          {messages.length > 0 && !isLoading && (
+            <div className="flex justify-center pt-2">
+              <WhatsAppShareButton
+                text={`HealthGuard Chat Summary:\n\n${messages.map((m) => `${m.role === "user" ? "Me" : "HealthGuard"}: ${m.content}`).join("\n\n")}\n\n— Shared from HealthGuard`}
+                label="Share chat via WhatsApp"
+                variant="sm"
+              />
+            </div>
+          )}
 
           {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
             <div className="flex gap-3">
