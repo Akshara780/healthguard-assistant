@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Bot, User, Loader2, Stethoscope, MapPin, Syringe } from "lucide-react";
+import { Send, Bot, User, Loader2, Stethoscope, MapPin, Syringe, MessageCircle } from "lucide-react";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
