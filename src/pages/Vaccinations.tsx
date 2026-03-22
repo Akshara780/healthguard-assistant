@@ -152,6 +152,18 @@ export default function Vaccinations() {
         )}
       </div>
 
+      {/* Share vaccination records */}
+      {records.length > 0 && (
+        <div className="mb-4">
+          <WhatsAppShareButton
+            text={`My Vaccination Records:\n\n${records.map((r) => `✅ ${r.name} — ${new Date(r.date).toLocaleDateString()} (${r.dose})${r.provider ? ` at ${r.provider}` : ""}`).join("\n")}\n\n— Shared from HealthGuard`}
+            label="Share records via WhatsApp"
+            variant="outline"
+            className="w-full"
+          />
+        </div>
+      )}
+
       {/* Recommended Schedule */}
       <Card>
         <CardHeader>
@@ -171,6 +183,11 @@ export default function Vaccinations() {
           </div>
         </CardContent>
       </Card>
+
+      {/* WhatsApp Reminders */}
+      <div className="mt-6">
+        <WhatsAppSubscribe />
+      </div>
     </div>
   );
 }

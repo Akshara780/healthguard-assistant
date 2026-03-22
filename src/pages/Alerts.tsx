@@ -153,6 +153,11 @@ export default function Alerts() {
           <p>No alerts match your filters.</p>
         </div>
       )}
+
+      {/* WhatsApp Subscription */}
+      <div className="mt-8">
+        <WhatsAppSubscribe />
+      </div>
     </div>
   );
 }

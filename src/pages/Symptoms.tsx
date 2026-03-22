@@ -238,7 +238,14 @@ export default function Symptoms() {
             </CardContent>
           </Card>
 
-          <Button onClick={reset} variant="outline" className="w-full">Check Another Symptom</Button>
+          <div className="flex gap-2">
+            <Button onClick={reset} variant="outline" className="flex-1">Check Another Symptom</Button>
+            <WhatsAppShareButton
+              text={`HealthGuard Symptom Check Results:\n\n${results.map((r) => `• ${r.condition} (${r.urgency} urgency)\n  ${r.recommendation}`).join("\n\n")}\n\n⚠️ This is AI-generated and does not replace medical advice.\n— Shared from HealthGuard`}
+              label="Share"
+              variant="outline"
+            />
+          </div>
         </div>
       )}
     </div>

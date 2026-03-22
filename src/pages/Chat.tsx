@@ -189,6 +189,17 @@ export default function Chat() {
             </div>
           ))}
 
+          {/* Share conversation via WhatsApp */}
+          {messages.length > 0 && !isLoading && (
+            <div className="flex justify-center pt-2">
+              <WhatsAppShareButton
+                text={`HealthGuard Chat Summary:\n\n${messages.map((m) => `${m.role === "user" ? "Me" : "HealthGuard"}: ${m.content}`).join("\n\n")}\n\n— Shared from HealthGuard`}
+                label="Share chat via WhatsApp"
+                variant="sm"
+              />
+            </div>
+          )}
+
           {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
             <div className="flex gap-3">
               <div className="shrink-0 h-8 w-8 rounded-full health-gradient flex items-center justify-center">
