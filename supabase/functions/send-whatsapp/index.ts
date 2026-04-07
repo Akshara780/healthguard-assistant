@@ -22,9 +22,11 @@ serve(async (req) => {
     const TWILIO_WHATSAPP_FROM = Deno.env.get("TWILIO_WHATSAPP_FROM");
     if (!TWILIO_WHATSAPP_FROM) throw new Error("TWILIO_WHATSAPP_FROM is not configured");
 
-    const { to, message } = await req.json();
+    const body = await req.json();
+    const to = typeof body.to === "string" ? body.to.replace(/\s+/g, "") : "";
+    const message = body.message;
 
-    if (!to || typeof to !== "string" || to.length < 10) {
+    if (!to || to.length < 10) {
       return new Response(JSON.stringify({ error: "Invalid phone number" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
