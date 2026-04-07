@@ -14,7 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      whatsapp_subscriptions: {
+        Row: {
+          active: boolean
+          created_at: string
+          health_alerts: boolean
+          id: string
+          phone: string
+          updated_at: string
+          vaccine_reminders: boolean
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          health_alerts?: boolean
+          id?: string
+          phone: string
+          updated_at?: string
+          vaccine_reminders?: boolean
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          health_alerts?: boolean
+          id?: string
+          phone?: string
+          updated_at?: string
+          vaccine_reminders?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
