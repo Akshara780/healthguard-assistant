@@ -80,7 +80,7 @@ export default function Index() {
                 </Link>
               </Button>
               <a
-                href="https://wa.me/14155238886?text=Hi%20HealthGuard!%20I%20need%20health%20guidance.%20%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%A8%E0%AE%BE%E0%AE%A9%E0%AF%8D%20%E0%AE%89%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D%20%E0%AE%89%E0%AE%A4%E0%AE%B5%E0%AE%BF%20%E0%AE%A4%E0%AF%87%E0%AE%B5%E0%AF%88."
+                href="https://wa.me/14155238886?text=Hi%20HealthGuard!%20I%20need%20health%20guidance.%0A%0A%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%A8%E0%AE%BE%E0%AE%A9%E0%AF%8D%20%E0%AE%89%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D%20%E0%AE%89%E0%AE%A4%E0%AE%B5%E0%AE%BF%20%E0%AE%A4%E0%AF%87%E0%AE%B5%E0%AF%88."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center h-11 w-11 rounded-full bg-[#25D366] hover:bg-[#1da851] transition-colors shadow-lg"
