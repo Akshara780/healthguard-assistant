@@ -42,19 +42,8 @@ serve(async (req) => {
       searchLon = parseFloat(geocodeData[0].lon);
     }
 
-    // Query Overpass API for hospitals and clinics within 10km radius
-    const overpassQuery = `
-      [out:json][timeout:10];
-      (
-        node["amenity"="hospital"](around:10000,${searchLat},${searchLon});
-        way["amenity"="hospital"](around:10000,${searchLat},${searchLon});
-        node["amenity"="clinic"](around:10000,${searchLat},${searchLon});
-        way["amenity"="clinic"](around:10000,${searchLat},${searchLon});
-        node["amenity"="doctors"](around:10000,${searchLat},${searchLon});
-        way["amenity"="doctors"](around:10000,${searchLat},${searchLon});
-      );
-      out center body 50;
-    `;
+    // Query Overpass API for hospitals and clinics within 15km radius
+    const overpassQuery = `[out:json][timeout:15];(node["amenity"="hospital"](around:15000,${searchLat},${searchLon});way["amenity"="hospital"](around:15000,${searchLat},${searchLon});node["amenity"="clinic"](around:15000,${searchLat},${searchLon});way["amenity"="clinic"](around:15000,${searchLat},${searchLon}););out center body 40;`;
 
     const overpassRes = await fetch("https://overpass-api.de/api/interpreter", {
       method: "POST",
