@@ -33,7 +33,26 @@ export default function Hospitals() {
   const [mapCenter, setMapCenter] = useState<{ lat: number; lon: number } | undefined>();
   const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
   const [view, setView] = useState<"split" | "list" | "map">("split");
+  const [selectedSpecialty, setSelectedSpecialty] = useState<string>("all");
   const { toast } = useToast();
+
+  const SPECIALTIES = [
+    "All Specialties",
+    "General",
+    "Cardiology",
+    "Orthopedics",
+    "Pediatrics",
+    "Neurology",
+    "Oncology",
+    "Gynecology",
+    "Ophthalmology",
+    "Dermatology",
+    "ENT",
+    "Dental",
+    "Psychiatry",
+    "Urology",
+    "Emergency",
+  ];
 
   const searchHospitals = useCallback(async (query?: string) => {
     const searchQuery = query ?? search;
