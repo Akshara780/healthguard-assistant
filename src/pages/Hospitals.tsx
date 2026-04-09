@@ -126,7 +126,12 @@ export default function Hospitals() {
     );
   };
 
-  const filtered = emergencyOnly ? hospitals.filter((h) => h.emergency) : hospitals;
+  const filtered = hospitals.filter((h) => {
+    const matchesEmergency = !emergencyOnly || h.emergency;
+    const matchesSpecialty = selectedSpecialty === "all" || 
+      h.specialties.some((s) => s.toLowerCase().includes(selectedSpecialty));
+    return matchesEmergency && matchesSpecialty;
+  });
 
   const showMap = view === "split" || view === "map";
   const showList = view === "split" || view === "list";
