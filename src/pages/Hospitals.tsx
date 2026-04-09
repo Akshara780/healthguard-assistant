@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Clock, ExternalLink, Search, Building2, Loader2, Globe, Map, List } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink, Search, Building2, Loader2, Globe, Map, List, Filter } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import HospitalMap from "@/components/HospitalMap";
@@ -33,7 +33,26 @@ export default function Hospitals() {
   const [mapCenter, setMapCenter] = useState<{ lat: number; lon: number } | undefined>();
   const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
   const [view, setView] = useState<"split" | "list" | "map">("split");
+  const [selectedSpecialty, setSelectedSpecialty] = useState<string>("all");
   const { toast } = useToast();
+
+  const SPECIALTIES = [
+    "All Specialties",
+    "General",
+    "Cardiology",
+    "Orthopedics",
+    "Pediatrics",
+    "Neurology",
+    "Oncology",
+    "Gynecology",
+    "Ophthalmology",
+    "Dermatology",
+    "ENT",
+    "Dental",
+    "Psychiatry",
+    "Urology",
+    "Emergency",
+  ];
 
   const searchHospitals = useCallback(async (query?: string) => {
     const searchQuery = query ?? search;
@@ -107,7 +126,12 @@ export default function Hospitals() {
     );
   };
 
-  const filtered = emergencyOnly ? hospitals.filter((h) => h.emergency) : hospitals;
+  const filtered = hospitals.filter((h) => {
+    const matchesEmergency = !emergencyOnly || h.emergency;
+    const matchesSpecialty = selectedSpecialty === "all" || 
+      h.specialties.some((s) => s.toLowerCase().includes(selectedSpecialty));
+    return matchesEmergency && matchesSpecialty;
+  });
 
   const showMap = view === "split" || view === "map";
   const showList = view === "split" || view === "list";
@@ -138,6 +162,27 @@ export default function Hospitals() {
         <Button variant="outline" onClick={useMyLocation} disabled={loading}>
           <MapPin className="h-4 w-4 mr-1" /> Near Me
         </Button>
+      </div>
+
+      {/* Specialty Filter */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-1">
+        <Filter className="h-4 w-4 text-muted-foreground shrink-0" />
+        <div className="flex gap-1.5 flex-wrap">
+          {SPECIALTIES.map((spec) => {
+            const value = spec === "All Specialties" ? "all" : spec.toLowerCase();
+            return (
+              <Button
+                key={spec}
+                variant={selectedSpecialty === value ? "default" : "outline"}
+                size="sm"
+                className={`h-7 text-xs ${selectedSpecialty === value ? "health-gradient border-0" : ""}`}
+                onClick={() => setSelectedSpecialty(value)}
+              >
+                {spec}
+              </Button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Filters & View Toggle */}
