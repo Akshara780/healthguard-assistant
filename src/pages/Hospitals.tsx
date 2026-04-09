@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Clock, ExternalLink, Search, Building2, Loader2, Globe, Map, List } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink, Search, Building2, Loader2, Globe, Map, List, Filter } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import HospitalMap from "@/components/HospitalMap";
