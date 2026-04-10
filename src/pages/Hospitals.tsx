@@ -156,19 +156,8 @@ export default function Hospitals() {
             className="pl-9"
           />
         </div>
-        <Button onClick={() => searchHospitals()} disabled={loading} className="health-gradient border-0">
-          {loading ? <Loader2 className="h-4 w-4 animate-spin mr-1" /> : <Search className="h-4 w-4 mr-1" />}
-          Search
-        </Button>
-        <Button variant="outline" onClick={useMyLocation} disabled={loading}>
-          <MapPin className="h-4 w-4 mr-1" /> Near Me
-        </Button>
-      </div>
-
-      {/* Specialty Filter */}
-      <div className="flex items-center gap-3 mb-4">
         <Select value={selectedSpecialty} onValueChange={setSelectedSpecialty}>
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-[180px] shrink-0">
             <SelectValue placeholder="All Specialties" />
           </SelectTrigger>
           <SelectContent>
@@ -182,6 +171,13 @@ export default function Hospitals() {
             })}
           </SelectContent>
         </Select>
+        <Button onClick={() => searchHospitals()} disabled={loading} className="health-gradient border-0">
+          {loading ? <Loader2 className="h-4 w-4 animate-spin mr-1" /> : <Search className="h-4 w-4 mr-1" />}
+          Search
+        </Button>
+        <Button variant="outline" onClick={useMyLocation} disabled={loading}>
+          <MapPin className="h-4 w-4 mr-1" /> Near Me
+        </Button>
       </div>
 
       {/* Filters & View Toggle */}
