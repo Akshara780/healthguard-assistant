@@ -166,24 +166,22 @@ export default function Hospitals() {
       </div>
 
       {/* Specialty Filter */}
-      <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-1">
-        <Filter className="h-4 w-4 text-muted-foreground shrink-0" />
-        <div className="flex gap-1.5 flex-wrap">
-          {SPECIALTIES.map((spec) => {
-            const value = spec === "All Specialties" ? "all" : spec.toLowerCase();
-            return (
-              <Button
-                key={spec}
-                variant={selectedSpecialty === value ? "default" : "outline"}
-                size="sm"
-                className={`h-7 text-xs ${selectedSpecialty === value ? "health-gradient border-0" : ""}`}
-                onClick={() => setSelectedSpecialty(value)}
-              >
-                {spec}
-              </Button>
-            );
-          })}
-        </div>
+      <div className="flex items-center gap-3 mb-4">
+        <Select value={selectedSpecialty} onValueChange={setSelectedSpecialty}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="All Specialties" />
+          </SelectTrigger>
+          <SelectContent>
+            {SPECIALTIES.map((spec) => {
+              const value = spec === "All Specialties" ? "all" : spec.toLowerCase();
+              return (
+                <SelectItem key={spec} value={value}>
+                  {spec}
+                </SelectItem>
+              );
+            })}
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Filters & View Toggle */}
