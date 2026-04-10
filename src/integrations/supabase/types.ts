@@ -14,6 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          date_of_birth: string | null
+          display_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vaccination_records: {
+        Row: {
+          created_at: string
+          date_taken: string
+          dose: string
+          id: string
+          notes: string | null
+          provider: string | null
+          updated_at: string
+          user_id: string
+          vaccine_name: string
+        }
+        Insert: {
+          created_at?: string
+          date_taken: string
+          dose?: string
+          id?: string
+          notes?: string | null
+          provider?: string | null
+          updated_at?: string
+          user_id: string
+          vaccine_name: string
+        }
+        Update: {
+          created_at?: string
+          date_taken?: string
+          dose?: string
+          id?: string
+          notes?: string | null
+          provider?: string | null
+          updated_at?: string
+          user_id?: string
+          vaccine_name?: string
+        }
+        Relationships: []
+      }
+      vaccination_schedules: {
+        Row: {
+          age_group: string
+          created_at: string
+          description: string | null
+          frequency: string
+          id: string
+          vaccine_name: string
+        }
+        Insert: {
+          age_group: string
+          created_at?: string
+          description?: string | null
+          frequency: string
+          id?: string
+          vaccine_name: string
+        }
+        Update: {
+          age_group?: string
+          created_at?: string
+          description?: string | null
+          frequency?: string
+          id?: string
+          vaccine_name?: string
+        }
+        Relationships: []
+      }
       whatsapp_subscriptions: {
         Row: {
           active: boolean
